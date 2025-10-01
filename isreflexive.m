@@ -1,21 +1,24 @@
 % isreflexive.m
 
-% Hugo Lindfors (huglih251)
+% Hugo Lindfors (huglih251) + Niklas Eriksen (nen)
 
-% The function accepts a relationship, for example isreflexive([1, 0, 0; 0, 1, 0; 0, 0, 1]), called `rel` as a parameter
-function r = isreflexive(rel)
+% The function accepts a (rel)ation matrix as a parameter
+function ref = isreflexive(rel)
 
-% n is initiated as the `size` function of `rel` and 2
-n = size(rel, 2);
+ref = true;
 
-r = 1; % `r` is initiated as 1 (TRUE)
+% m, n are the side lenths of our relation matrix
+[m, n] = size(rel);
 
-% Python equivalent: `for j in range(1, n):`
-for j = 1 : n
-    if rel(j, j) == 0
-        r = 0; % Change `r` to 0 (FALSE)
+% Here we check if it's a square matrix or not; if it isn't, it's pointless to check reflexity
+if m == n
+    for i = 1 : n
+        if ~rel(i, i)
+            ref = false;
+        end
     end
-
+else
+  disp("The provided relation matrix `rel` is not square matrix.")
 end
 
 end

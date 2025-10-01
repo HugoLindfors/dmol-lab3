@@ -1,10 +1,16 @@
-function isantisymmetric(matrix)
+% isantisymmetric.m
 
-antisymmetric = true;
+% Hugo Lindfors (huglih251)
 
-n = size(matrix, 2);
+% The function accepts a (rel)ation matrix as a parameter
+function ant = isantisymmetric(matrix)
 
-if size(matrix, 1) == size(matrix, 2)
+ant = true;
+
+[m, n] = size(matrix);
+
+% Here we check if it's a square matrix or not; if it isn't, it's pointless to check antisymmetry
+if m == n
   for x = 1 : n
     for y = 1 : n
       if matrix(x, y) == matrix(y, x) ...
@@ -18,14 +24,8 @@ if size(matrix, 1) == size(matrix, 2)
       break;
     end
   end
-end
-
-clc
-
-if antisymmetric
-  disp("antisymmetric");
 else
-  disp("not antisymmetric");
+  disp("The provided relation matrix `rel` is not square matrix.")
 end
 
 end

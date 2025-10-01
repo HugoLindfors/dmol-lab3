@@ -1,27 +1,40 @@
-function istransitive(matrix)
+% istransitive.m
+
+% Hugo Lindfors (huglih251)
+
+% The function accepts a (rel)ation matrix as a parameter
+function transitive = istransitive(rel)
 
 transitive = true;
 
-n = size(matrix, 2);
+% m, n are the side lenths of our relation matrix
+[m, n] = size(rel);
 
-if size(matrix, 1) == size(matrix, 2)
+% Here we check if it's a square matrix or not; if it isn't, it's pointless to check transitivity
+if m == n
+
+  % The definition of transitive is that for x, y, z ∈ A, if xRy and yRz, then xRz must be true in order for A to be transitive.
   for x = 1 : n
     for y = 1 : n
-      if matrix(x, y) ~= matrix(y, x)
-        transitive = false;
+
+      % We check if xRy
+      if rel(x, y)
+        for z = 1 : n
+
+          % We check if yRz
+          if rel(y, z)
+
+            % We check if xRz
+            if ~rel(x, z)
+              transitive = false;
+            end
+          end
+        end
       end
     end
   end
 else
-  transitive = false;
-end
-
-clc
-
-if transitive
-  disp("trans<<<lative");
-else
-  disp("a transitive");
+  disp("The provided relation matrix `rel` is not square matrix.")
 end
 
 end

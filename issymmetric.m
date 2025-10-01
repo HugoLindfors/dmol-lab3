@@ -1,27 +1,26 @@
-function issymmetric(matrix)
+% issymmmetric.m
 
-symmetric = true;
+% Hugo Lindfors (huglih251)
 
-n = size(matrix, 2);
+% The function accepts a (rel)ation matrix as a parameter
+function sym = issymmetric(matrix)
 
-if size(matrix, 1) == size(matrix, 2)
-  for x = 1 : n
-    for y = 1 : n
-      if matrix(x, y) ~= matrix(y, x)
-        symmetric = false;
+sym = true;
+
+% m, n are the side lenths of our relation matrix
+[m, n] = size(matrix);
+
+% Here we check if it's a square matrix or not; if it isn't, it's pointless to check symmetry
+if m == n
+  for i = 1 : n
+    for j = 1 : n
+      if matrix(i, j) ~= matrix(j, i)
+        sym = false;
       end
     end
   end
 else
-  symmetric = false;
-end
-
-clc
-
-if symmetric
-  disp("symmetric");
-else
-  disp("asymmetric");
+  sym = false;
 end
 
 end
