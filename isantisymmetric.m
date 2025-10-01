@@ -13,14 +13,14 @@ ant = true;
 if m == n
   for i = 1 : n
     for j = 1 : n
-      if matrix(i, j) == matrix(j, i) ...
-          && matrix(i, j) ~= 0 ...
+      if relmat(i, j) == relmat(j, i) ...
+          && relmat(i, j) ~= 0 ...
           && i ~= j
-        antisymmetric = false;
+        ant = false;
         break;
       end
     end
-    if ~antisymmetric
+    if ~ant
       break;
     end
   end
