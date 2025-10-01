@@ -18,6 +18,6 @@ end
 if remainder ~= 0 && divisor ~= 0
     dividend = divisor;
     divisor = quotient;
-    mygcd_recursive(dividend, divisor)
+    mygcd(dividend, divisor)
 end
 end
