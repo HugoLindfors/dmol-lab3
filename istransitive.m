@@ -2,13 +2,13 @@
 
 % Hugo Lindfors (huglih251)
 
-% The function accepts a (rel)ation matrix as a parameter
-function transitive = istransitive(rel)
+% The function accepts a (rel)ation (mat)rix as a parameter
+function tra = istransitive(relmat)
 
-transitive = true;
+tra = true;
 
 % m, n are the side lenths of our relation matrix
-[m, n] = size(rel);
+[m, n] = size(relmat);
 
 % Here we check if it's a square matrix or not; if it isn't, it's pointless to check transitivity
 if m == n
@@ -18,15 +18,15 @@ if m == n
     for y = 1 : n
 
       % We check if xRy
-      if rel(x, y)
+      if relmat(x, y)
         for z = 1 : n
 
           % We check if yRz
-          if rel(y, z)
+          if relmat(y, z)
 
             % We check if xRz
-            if ~rel(x, z)
-              transitive = false;
+            if ~relmat(x, z)
+              tra = false;
             end
           end
         end
